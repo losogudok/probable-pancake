@@ -8,7 +8,7 @@ from contextlib import asynccontextmanager
 
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.staticfiles import StaticFiles
-from fastapi.responses import HTMLResponse, JSONResponse
+from fastapi.responses import HTMLResponse, FileResponse
 from pydantic import BaseModel
 
 from ..core.config import settings, GRAPH_PATH, INDEX_PATH, DOCS_DB_PATH, BASE_DIR
@@ -213,14 +213,30 @@ async def dashboard():
 # ---------------------------------------------------------------------------
 
 frontend_dir = BASE_DIR / "frontend"
-if frontend_dir.exists():
-    app.mount("/static", StaticFiles(directory=str(frontend_dir)), name="static")
+frontend_dist = frontend_dir / "dist"
+frontend_assets = frontend_dist / "assets"
+if frontend_assets.exists():
+    app.mount("/assets", StaticFiles(directory=str(frontend_assets)), name="frontend-assets")
 
 
 @app.get("/", response_class=HTMLResponse)
 async def index():
-    """Serve the main UI."""
-    index_html = frontend_dir / "index.html"
+    """Serve the production React application."""
+    index_html = frontend_dist / "index.html"
     if index_html.exists():
-        return HTMLResponse(index_html.read_text(encoding="utf-8"))
-    return HTMLResponse("<h1>Научный клубок API</h1><p>Frontend not found. Use /docs for API.</p>")
+        return FileResponse(index_html)
+    return HTMLResponse(
+        "<h1>Научный клубок API</h1>"
+        "<p>Frontend не собран. Выполните <code>cd frontend && npm ci && npm run build</code>.</p>"
+    )
+
+
+@app.get("/{frontend_path:path}", include_in_schema=False)
+async def frontend_spa(frontend_path: str):
+    """Return the React entrypoint for client-side routes and 404 for missing assets."""
+    if frontend_path.startswith("api/") or frontend_path.startswith("assets/"):
+        raise HTTPException(404, "Not found")
+    index_html = frontend_dist / "index.html"
+    if index_html.exists():
+        return FileResponse(index_html)
+    raise HTTPException(404, "Frontend build not found")

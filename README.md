@@ -77,7 +77,7 @@
 | **LLM (резерв)** | Qwen3.5-27B | GGUF Q5_K_M | Фолбэк при недоступности основной |
 | **Torch** | PyTorch | 2.8.0+cpu | CPU-инференс эмбеддингов |
 | **Transformers** | HuggingFace | 4.57.x | Загрузка моделей |
-| **Веб-интерфейс** | HTML + CSS + JS | — | SPA с 7 вкладками |
+| **Веб-интерфейс** | React + Vite + TypeScript | 19 / 7 | Responsive SPA: поиск, граф, источники, качество, аналитика |
 
 ## Установка и запуск
 
@@ -109,12 +109,27 @@ python3 -m app.build
 ### Запуск сервера
 
 ```bash
+cd frontend
+npm ci
+npm run build
+cd ..
 uvicorn app.api.server:app --host 0.0.0.0 --port 8080
 ```
 
 ### Веб-интерфейс
 
 Откройте `http://localhost:8080` в браузере.
+
+Для frontend-разработки без backend используется типизированный mock API:
+
+```bash
+cd frontend
+cp .env.example .env
+npm run dev
+```
+
+Откройте `http://localhost:5173`. Для переключения на HTTP-адаптер задайте
+`VITE_API_MODE=http` и `VITE_API_BASE_URL=http://localhost:8080`.
 
 ## API Endpoints
 
