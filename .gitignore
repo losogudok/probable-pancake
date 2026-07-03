@@ -1,0 +1,77 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Virtual envs
+.venv/
+venv/
+env/
+ENV/
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Testing / coverage
+.pytest_cache/
+.tox/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+.cache/
+
+# Type checkers / linters
+.mypy_cache/
+.ruff_cache/
+.pyre/
+.dmypy.json
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Frontend
+node_modules/
+frontend/node_modules/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Data / models (large generated artifacts)
+data/*
+data/*.bin
+data/*.pt
+data/*.safetensors
+data/*.pkl
+data/*.npz
+data/*.npz.bak
+data/*.npy
+models/
+*.model
+
+# Large generated document stores (use git-lfs or regenerate)
+data/documents.json
+data/documents_fast.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo

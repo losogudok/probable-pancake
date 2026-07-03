@@ -1,0 +1,16 @@
+fastapi[all]
+uvicorn[standard]
+pydantic
+
+networkx
+rank_bm25
+sentence_transformers
+torch
+transformers
+
+PyMuPDF
+python-docx
+openpyxl
+numpy
+
+pytest
