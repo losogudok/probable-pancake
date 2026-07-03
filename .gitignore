@@ -51,15 +51,9 @@ yarn-debug.log*
 yarn-error.log*
 
 # Data / models (large generated artifacts)
-data/*
-data/*.bin
-data/*.pt
-data/*.safetensors
-data/*.pkl
-data/*.npz
-data/*.npz.bak
-data/*.npy
+data/
 models/
+sources/
 *.model
 
 # Large generated document stores (use git-lfs or regenerate)
@@ -75,3 +69,6 @@ Thumbs.db
 .vscode/
 *.swp
 *.swo
+
+review.md
+review2.md
