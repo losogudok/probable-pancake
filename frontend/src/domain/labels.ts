@@ -1,7 +1,81 @@
-import type { AnalysisMode, DemoRole, EntityType, Geography, SourceType } from "./types";
+import type {
+  ConfidenceLevel,
+  DemoRole,
+  EntityType,
+  RelationType,
+  SearchIntent,
+  Unit,
+} from "./types";
 
-export const modeLabels: Record<AnalysisMode | "auto", string> = { auto: "Авто", answer: "Ответ", literature_review: "Литобзор", comparison: "Сравнение" };
-export const geographyLabels: Record<Geography, string> = { Russia: "Россия", CIS: "СНГ", Foreign: "Зарубежная", Global: "Глобальная", Unknown: "Не определена" };
-export const sourceTypeLabels: Record<SourceType, string> = { scientific_article: "Научная статья", patent: "Патент", internal_report: "Внутренний отчёт", conference_paper: "Материалы конференции", journal_issue: "Журнал", review: "Обзор" };
-export const roleLabels: Record<DemoRole, string> = { researcher: "Исследователь", analyst: "Аналитик", project_lead: "Руководитель проекта", admin: "Администратор", external_partner: "Внешний партнёр" };
-export const entityLabels: Record<EntityType, string> = { Material: "Материал", Process: "Процесс", Equipment: "Оборудование", Facility: "Площадка", Experiment: "Эксперимент", Publication: "Публикация", Expert: "Эксперт", Parameter: "Параметр", Phase: "Фаза", Technology: "Технология" };
+export const roleLabels: Record<DemoRole, string> = {
+  researcher: "Исследователь",
+  analyst: "Аналитик",
+  project_lead: "Руководитель проекта",
+  admin: "Администратор",
+  external_partner: "Внешний партнёр",
+};
+
+export const intentLabels: Record<SearchIntent, string> = {
+  numeric: "Числовой разбор",
+  search: "Поиск по корпусу",
+  expert: "Экспертный поиск",
+  listing: "Перечень фактов",
+};
+
+export const confidenceLabels: Record<ConfidenceLevel, string> = {
+  высокая: "Высокая",
+  средняя: "Средняя",
+  низкая: "Низкая",
+};
+
+/** Канон unit → отображение (см. API.md §1). */
+export const unitLabels: Record<Unit, string> = {
+  pct: "%",
+  mg_L: "мг/л",
+  g_t: "г/т",
+  degC: "°C",
+  pH: "pH",
+  A_m2: "А/м²",
+  t_day: "т/сут",
+  m3_h: "м³/ч",
+};
+
+export const entityLabels: Record<EntityType, string> = {
+  Material: "Материал",
+  Process: "Процесс",
+  Equipment: "Оборудование",
+  Property: "Свойство",
+  Experiment: "Эксперимент",
+  Publication: "Публикация",
+  Expert: "Эксперт",
+  Facility: "Площадка",
+  Document: "Документ",
+  Parameter: "Параметр",
+  Phase: "Фаза",
+  Condition: "Условие",
+  Domain: "Дисциплина",
+  Claim: "Тезис",
+};
+
+export const relationLabels: Record<RelationType, string> = {
+  USES_MATERIAL: "использует материал",
+  OPERATES_AT_CONDITION: "работает при условии",
+  PRODUCES_OUTPUT: "производит результат",
+  DESCRIBED_IN: "описано в",
+  VALIDATED_BY: "подтверждено",
+  CONTRADICTS: "противоречит",
+  AUTHORED_BY: "автор",
+  IN_DOMAIN: "в дисциплине",
+  SHOWED: "показал",
+  MEASURES: "измеряет",
+  HAS_PARAM: "имеет параметр",
+};
+
+/** Метки для `Filters.geo` — нормализованные значения из API.md. */
+export const geoOptions: { value: string; label: string }[] = [
+  { value: "RU", label: "Россия / отечественная" },
+  { value: "WORLD", label: "Зарубежная / мировая" },
+  { value: "Kazakhstan", label: "Казахстан" },
+  { value: "China", label: "Китай" },
+  { value: "Canada", label: "Канада" },
+];

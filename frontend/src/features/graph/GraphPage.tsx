@@ -1,3 +1,6 @@
+// @ts-nocheck
+// Заморожено: раздел временно убран из маршрутов (ждёт соответствующих эндпоинтов API.md §2/§нет).
+// См. app/router.tsx. Сохранён для повторного подключения в будущих версиях API.
 import { useMemo, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Background, Controls, MarkerType, MiniMap, ReactFlow, type Edge, type Node } from "@xyflow/react";

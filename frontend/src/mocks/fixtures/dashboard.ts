@@ -1,18 +1,91 @@
-import type { DashboardData, QualityItemGroup } from "../../domain/types";
-import { catholyteAnswer, desalinationAnswer, pgmAnswer } from "./scenarios";
+import {
+  type CompareResponse,
+  type CoverageDomain,
+  type CoverageGeo,
+  type CoverageYear,
+  type DashboardActivity,
+  type DashboardExpert,
+  type DashboardSummary,
+  type RiskZones,
+} from "../../domain/types";
 
-export const dashboard: DashboardData = {
-  totals: { documents: 1281, facts: 830409, nodes: 1717, edges: 51184, experts: 285, contradictions: 12, gaps: 37, confidence: 87 },
-  byYear: [{ year: 2019, count: 94 }, { year: 2020, count: 108 }, { year: 2021, count: 126 }, { year: 2022, count: 141 }, { year: 2023, count: 155 }, { year: 2024, count: 187 }, { year: 2025, count: 201 }],
-  byDomain: [{ name: "Гидрометаллургия", value: 34 }, { name: "Пирометаллургия", value: 27 }, { name: "Горное дело", value: 24 }, { name: "Экология", value: 15 }],
-  byGeography: [{ name: "Глобальная", value: 895 }, { name: "Зарубежная", value: 301 }, { name: "Россия", value: 51 }, { name: "Не определена", value: 34 }],
-  bySourceType: [{ name: "Конференции", value: 740 }, { name: "Журналы", value: 373 }, { name: "Обзоры", value: 101 }, { name: "Статьи", value: 52 }, { name: "Доклады", value: 15 }],
-  coverage: [{ material: "Никель", process: "Электроэкстракция", score: 94 }, { material: "Медь", process: "Плавка", score: 88 }, { material: "Шахтные воды", process: "Очистка", score: 62 }, { material: "МПГ", process: "Распределение", score: 48 }],
-  weakTopics: [{ topic: "Закачка шахтных вод: экономика", documents: 2 }, { topic: "МПГ: публикации последних 5 лет", documents: 3 }, { topic: "Кучное выщелачивание в Арктике", documents: 4 }],
+/** GET /api/dashboard/summary — KPI-объект (API.md §5). */
+export const dashboardSummary: DashboardSummary = {
+  docs: 1288,
+  facts: 21198,
+  experts: 148,
+  domains: 5,
+  contradictions: 272,
+  ru: 514,
+  world: 755,
+  geo_unknown: 0,
+  ru_share: 0.4,
+  world_share: 0.59,
+  docs_with_facts: 144,
+  fact_coverage: 0.112,
 };
 
-export const quality: QualityItemGroup = {
-  contradictions: [...catholyteAnswer.contradictions],
-  validations: [...catholyteAnswer.validations, ...desalinationAnswer.validations],
-  gaps: [...catholyteAnswer.gaps, ...desalinationAnswer.gaps, ...pgmAnswer.gaps],
+export const coverageByDomain: CoverageDomain[] = [
+  { domain: "гидрометаллургия", documents: 412, facts: 7180, experts: 51 },
+  { domain: "пирометаллургия", documents: 301, facts: 5240, experts: 38 },
+  { domain: "экология", documents: 244, facts: 4112, experts: 29 },
+  { domain: "переработка отходов", documents: 198, facts: 3310, experts: 19 },
+  { domain: "горное дело", documents: 133, facts: 1356, experts: 11 },
+];
+
+export const coverageByYear: CoverageYear[] = [
+  { year: 2019, documents: 188, facts: 2710 },
+  { year: 2020, documents: 201, facts: 3022 },
+  { year: 2021, documents: 246, facts: 4014 },
+  { year: 2022, documents: 272, facts: 4691 },
+  { year: 2023, documents: 305, facts: 5230 },
+  { year: 2024, documents: 372, facts: 6041 },
+  { year: 2025, documents: 404, facts: 6890 },
+];
+
+export const coverageByGeo: CoverageGeo[] = [
+  { geo: "WORLD", documents: 755, facts: 12910 },
+  { geo: "RU", documents: 514, facts: 8264 },
+  { geo: "Kazakhstan", documents: 12, facts: 18 },
+  { geo: "China", documents: 7, facts: 6 },
+];
+
+export const riskZones: RiskZones = {
+  low_sources: [
+    { entity: "CO", type: "Material", sources: 1 },
+    { entity: "обжиг", type: "Process", sources: 1 },
+  ],
+  contradictions: [],
+  only_ru: [{ entity: "глубинная закачка", type: "Process", sources: 1 }],
+  only_world: [{ entity: "кучное выщелачивание", type: "Process", sources: 14 }],
 };
+
+export const dashboardActivity: DashboardActivity[] = [
+  { doc_id: "cdd5b92b3ff84174", year: 2025, geo: "WORLD", facts: 18, experts: 0, last_extracted: "2026-07-04T00:08:16Z" },
+  { doc_id: "80361f9171bda73b", year: 2021, geo: "WORLD", facts: 13, experts: 1, last_extracted: "2026-07-04T00:08:16Z" },
+  { doc_id: "4aff936f59da1880", year: 2015, geo: "WORLD", facts: 22, experts: 0, last_extracted: "2026-07-04T00:08:16Z" },
+  { doc_id: "43f9157e458b127e", year: 2004, geo: "RU", facts: 9, experts: 0, last_extracted: "2026-07-04T00:08:16Z" },
+];
+
+export const dashboardExperts: DashboardExpert[] = [
+  { expert: "Евграфова А. К.", documents: 4, domains: 1, domain_list: ["пирометаллургия"] },
+  { expert: "Сидоров П. Н.", documents: 7, domains: 2, domain_list: ["гидрометаллургия", "экология"] },
+  { expert: "Минин Р. О.", documents: 3, domains: 1, domain_list: ["переработка отходов"] },
+];
+
+export function compareTechnologies(processes: string[]): CompareResponse {
+  const rows = processes.map((process) => ({
+    process,
+    efficiency_pct: { min: 15.0, max: 98.0, unit: "pct" as const, unit_ru: "%", samples: 11 },
+    energy: null,
+    temperature_c: { min: 0.0, max: 1200.0, unit: "degC" as const, unit_ru: "°C", samples: 8 },
+    cold_climate: process === "глубинная закачка",
+    ecology: { min: 0.0, max: 0.6, unit: "pct" as const, unit_ru: "%", samples: 4 },
+    capex: null,
+  }));
+  return {
+    axes: ["efficiency_pct", "energy", "temperature_c", "cold_climate", "ecology", "capex"],
+    meta: { unavailable: ["energy", "capex"] },
+    rows,
+  };
+}

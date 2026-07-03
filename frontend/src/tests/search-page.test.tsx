@@ -20,10 +20,14 @@ describe("SearchPage", () => {
     expect(results.violations).toHaveLength(0);
   });
 
-  it("runs the catholyte scenario and shows evidence", async () => {
+  it("runs the catholyte search and shows numeric facts", async () => {
     const user = userEvent.setup(); renderPage();
     await user.click(screen.getByRole("button", { name: /Циркуляция католита/ }));
-    expect(await screen.findByText(/20–30 л\/ч — документированный/)).toBeInTheDocument();
-    expect(screen.getByText(/Скорость циркуляции обычно составляет 20–30 л\/ч/)).toBeInTheDocument();
+    // Answer intent badge + numeric range in rendered markdown
+    expect(await screen.findByText("Числовой разбор")).toBeInTheDocument();
+    expect(await screen.findByText(/20–30 л\/ч/)).toBeInTheDocument();
+    // Facts table exposes the canonical canon "электроэкстракция" (несколько карточек)
+    const canonCards = await screen.findAllByText("электроэкстракция");
+    expect(canonCards.length).toBeGreaterThan(0);
   });
 });

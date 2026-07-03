@@ -1,3 +1,6 @@
+// @ts-nocheck
+// Заморожено: раздел временно убран из маршрутов (ждёт соответствующих эндпоинтов API.md §2/§нет).
+// См. app/router.tsx. Сохранён для повторного подключения в будущих версиях API.
 import { useEffect, useRef, useState } from "react";
 import { FileUp, UploadCloud, X } from "lucide-react";
 import { api } from "../../api/api-provider";

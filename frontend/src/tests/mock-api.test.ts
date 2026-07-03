@@ -1,24 +1,71 @@
 import { describe, expect, it } from "vitest";
 import { MockKnowledgeApi } from "../api/mock-knowledge-api";
 
+function readBlobText(blob: Blob): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(String(reader.result ?? ""));
+    reader.onerror = () => reject(reader.error);
+    reader.readAsText(blob);
+  });
+}
+
 describe("MockKnowledgeApi", () => {
-  it("recognizes catholyte query and returns sourced flow range", async () => {
+  it("catholyte query returns numeric facts and markdown answer", async () => {
     const api = new MockKnowledgeApi();
-    const answer = await api.ask({ query: "Какая скорость циркуляции католита при электроэкстракции никеля?", mode: "auto", filters: {} });
-    expect(answer.summary).toContain("20–30 л/ч");
-    expect(answer.sources[0].chunkId).toBe("e7fb17923275db5b_0009");
+    const res = await api.search({ query: "Какая скорость циркуляции католита при электроэкстракции никеля?", role: "researcher", filters: {} });
+    expect(res.intent).toBe("numeric");
+    expect(res.answer_md).toContain("20–30 л/ч");
+    const flow = res.facts.find((f) => f.ref === "catholyte-flow");
+    expect(flow).toBeDefined();
+    expect(flow!.value_low).toBe(20);
+    expect(flow!.value_high).toBe(30);
+    expect(flow!.doc_id).toBe("cdd5b92b3ff84174");
   });
 
-  it("does not invent a deep answer for an unknown query", async () => {
+  it("does not invent facts for an unknown query", async () => {
     const api = new MockKnowledgeApi();
-    const answer = await api.ask({ query: "Неизвестная новая технология XZ-42", mode: "auto", filters: {} });
-    expect(answer.summary).toContain("Недостаточно структурированных данных");
+    const res = await api.search({ query: "qzxzy abracadabra флюксоид 999999", role: "researcher", filters: {} });
+    // либо пустой факт-лист, либо маркированный «поиск» без сущностных фактов
+    expect(res.facts.length).toBe(0);
+    expect(res.intent).toBe("search");
   });
 
-  it("emits all upload stages", async () => {
-    const api = new MockKnowledgeApi(); const stages: string[] = [];
-    const file = new File(["demo"], "report.pdf", { type: "application/pdf" });
-    await api.uploadDocuments({ files: [file], category: "review", language: "ru", geography: "Global", sensitivity: "internal" }, (event) => stages.push(event.stage));
-    expect(stages).toEqual(["upload", "recognition", "normalization", "extraction", "indexing", "complete"]);
+  it("hides internal facts from external_partner and reports hidden_count", async () => {
+    const api = new MockKnowledgeApi();
+    const res = await api.search({ query: "Закачка шахтных вод в глубокие горизонты", role: "external_partner", filters: {} });
+    expect(res.facts.every((f) => (f.sensitivity ?? "public") === "public")).toBe(true);
+    expect(res.hidden_count).toBeGreaterThan(0);
+  });
+
+  it("literature review returns markdown with sources", async () => {
+    const api = new MockKnowledgeApi();
+    const res = await api.literatureReview({ query: "католит" });
+    expect(res.markdown).toContain("## ");
+    expect(res.markdown).toContain("Источники");
+  });
+
+  it("export markdown returns text/markdown blob", async () => {
+    const api = new MockKnowledgeApi();
+    const res = await api.search({ query: "католит", role: "researcher", filters: {} });
+    const blob = await api.exportResult("markdown", res);
+    expect(blob.type).toContain("text/markdown");
+    expect(await readBlobText(blob)).toContain("20–30 л/ч");
+  });
+
+  it("dashboard summary exposes KPI fields from API.md §5", async () => {
+    const api = new MockKnowledgeApi();
+    const s = await api.dashboardSummary();
+    expect(s.docs).toBeGreaterThan(0);
+    expect(s.ru_share).toBeGreaterThan(0);
+    expect(s.fact_coverage).toBeLessThan(1);
+  });
+
+  it("contradictions filter by kind", async () => {
+    const api = new MockKnowledgeApi();
+    const all = await api.fetchContradictions();
+    const method = await api.fetchContradictions("method_vs_method");
+    expect(method.every((c) => c.kind === "method_vs_method")).toBe(true);
+    expect(method.length).toBeLessThanOrEqual(all.length);
   });
 });

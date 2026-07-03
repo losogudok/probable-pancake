@@ -1,25 +1,28 @@
-import { BarChart3, BookOpenText, CircleHelp, GitFork, LogOut, Menu, Search, ShieldCheck, Sparkles } from "lucide-react";
+import { BarChart3, CircleHelp, LogOut, Menu, Search, ShieldCheck, Sparkles } from "lucide-react";
 import { NavLink, Outlet } from "react-router-dom";
 import { useState } from "react";
 import { isMockMode } from "../api/api-provider";
 import { roleLabels } from "../domain/labels";
-import type { DemoRole } from "../domain/types";
 import { useSession } from "./session-context";
 import s from "../styles/ui.module.css";
 
+// Разделы «Граф» и «Источники» временно скрыты — соответствующие эндпоинты
+// контрактовой в API.md не описаны (см. CONTEXT.md / docs/adr). Вкладка «Аналитика»
+// ограничена ролями `project_lead`/`admin` (API.md §5).
 const nav = [
-  { to: "/", label: "Поиск", icon: Search, end: true }, { to: "/graph", label: "Граф", icon: GitFork },
-  { to: "/sources", label: "Источники", icon: BookOpenText }, { to: "/quality", label: "Качество", icon: ShieldCheck },
-  { to: "/analytics", label: "Аналитика", icon: BarChart3 },
+  { to: "/", label: "Поиск", icon: Search, end: true, roles: null as null | string[] },
+  { to: "/quality", label: "Качество", icon: ShieldCheck, end: false, roles: null },
+  { to: "/analytics", label: "Аналитика", icon: BarChart3, end: false, roles: ["project_lead", "admin"] },
 ];
-const roles = Object.keys(roleLabels) as DemoRole[];
+const roles = Object.keys(roleLabels) as (keyof typeof roleLabels)[];
 
 export function App() {
   const [profileOpen, setProfileOpen] = useState(false); const { role, setRole, resetDemo } = useSession();
+  const visibleNav = nav.filter((item) => !item.roles || item.roles.includes(role));
   return <div className={s.appShell}>
     <aside className={s.sidebar}>
       <div className={s.brand}><span className={s.brandMark}><Sparkles size={20} /></span><span><b>Научный клубок</b><small>R&D knowledge map</small></span></div>
-      <nav className={s.desktopNav} aria-label="Основная навигация">{nav.map(({ to, label, icon: Icon, end }) => <NavLink key={to} to={to} end={end} className={({ isActive }) => `${s.navItem} ${isActive ? s.navActive : ""}`}><Icon size={19}/><span>{label}</span></NavLink>)}</nav>
+      <nav className={s.desktopNav} aria-label="Основная навигация">{visibleNav.map(({ to, label, icon: Icon, end }) => <NavLink key={to} to={to} end={end} className={({ isActive }) => `${s.navItem} ${isActive ? s.navActive : ""}`}><Icon size={19}/><span>{label}</span></NavLink>)}</nav>
       <div className={s.sidebarFooter}><div className={s.statusLine}><span className={s.statusDot}/><span>{isMockMode ? "Демо-данные" : "API подключён"}</span></div><button className={s.helpButton}><CircleHelp size={18}/>Как пользоваться</button></div>
     </aside>
     <div className={s.workspace}>
@@ -34,6 +37,6 @@ export function App() {
       </header>
       <main className={s.main}><Outlet/></main>
     </div>
-    <nav className={s.mobileNav} aria-label="Мобильная навигация">{nav.map(({ to, label, icon: Icon, end }) => <NavLink key={to} to={to} end={end} className={({ isActive }) => `${s.mobileNavItem} ${isActive ? s.mobileNavActive : ""}`}><Icon size={20}/><span>{label}</span></NavLink>)}</nav>
+    <nav className={s.mobileNav} aria-label="Мобильная навигация">{visibleNav.map(({ to, label, icon: Icon, end }) => <NavLink key={to} to={to} end={end} className={({ isActive }) => `${s.mobileNavItem} ${isActive ? s.mobileNavActive : ""}`}><Icon size={20}/><span>{label}</span></NavLink>)}</nav>
   </div>;
 }
