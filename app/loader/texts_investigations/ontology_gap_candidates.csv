@@ -1,0 +1,155 @@
+﻿candidate,entity_type,source,matches,suggested_action
+напряжений,Property,heuristic_word,10,review: add TermSpec as Property if meaningful
+керна,Material,heuristic_word,7,review: add TermSpec as Material if meaningful
+массива,RockMass,heuristic_word,5,review: add TermSpec as RockMass if meaningful
+деформаций,Property,heuristic_word,5,review: add TermSpec as Property if meaningful
+метода,Method,heuristic_word,4,review: add TermSpec as Method if meaningful
+измерения,Process,heuristic_word,4,review: add TermSpec as Process if meaningful
+Метод полной разгрузки керна Overcoring,Method,heuristic_phrase,4,review: add TermSpec as Method if meaningful
+Численное моделирование процесса разгрузки,Process,heuristic_phrase,4,review: add TermSpec as Process if meaningful
+скважины,MineObject,heuristic_word,4,review: add TermSpec as MineObject if meaningful
+напряженно деформированного состояния,Property,heuristic_phrase,3,review: add TermSpec as Property if meaningful
+поле напряжений,Property,heuristic_phrase,3,review: add TermSpec as Property if meaningful
+использованием численного моделирования,Model,heuristic_phrase,3,review: add TermSpec as Model if meaningful
+CAE Fidesys,Equipment,heuristic_phrase,3,review: add TermSpec as Equipment if meaningful
+Измерение,Process,heuristic_word,3,review: add TermSpec as Process if meaningful
+Тарировка,Process,heuristic_word,3,review: add TermSpec as Process if meaningful
+экстензометра,Equipment,heuristic_word,3,review: add TermSpec as Equipment if meaningful
+HQ,Equipment,heuristic_word,3,review: add TermSpec as Equipment if meaningful
+разгрузки,Process,heuristic_word,3,review: add TermSpec as Process if meaningful
+НХР,GeologicalFeature,heuristic_word,3,review: add TermSpec as GeologicalFeature if meaningful
+пород,RockMass,heuristic_word,2,review: add TermSpec as RockMass if meaningful
+Талнахского месторождения,MineObject,heuristic_phrase,2,review: add TermSpec as MineObject if meaningful
+численного моделирования,Model,heuristic_phrase,2,review: add TermSpec as Model if meaningful
+влияния,Condition,heuristic_word,2,review: add TermSpec as Condition if meaningful
+проведения измерений,Process,heuristic_phrase,2,review: add TermSpec as Process if meaningful
+методов определения,Method,heuristic_phrase,2,review: add TermSpec as Method if meaningful
+глубины,Parameter,heuristic_word,2,review: add TermSpec as Parameter if meaningful
+бурения скважин,Process,heuristic_phrase,2,review: add TermSpec as Process if meaningful
+выработки,MineObject,heuristic_word,2,review: add TermSpec as MineObject if meaningful
+развития пластических деформаций,Condition,heuristic_phrase,2,review: add TermSpec as Condition if meaningful
+установки экстензометров,Equipment,heuristic_phrase,2,review: add TermSpec as Equipment if meaningful
+Интерпретация результатов,Process,heuristic_phrase,2,review: add TermSpec as Process if meaningful
+измерений,Process,heuristic_word,2,review: add TermSpec as Process if meaningful
+Метод полной разгрузки керна,Method,heuristic_phrase,2,review: add TermSpec as Method if meaningful
+перемещений,Property,heuristic_word,2,review: add TermSpec as Property if meaningful
+скважинный деформометр,Equipment,heuristic_phrase,2,review: add TermSpec as Equipment if meaningful
+Бурение,Process,heuristic_word,2,review: add TermSpec as Process if meaningful
+пилотной скважины,MineObject,heuristic_phrase,2,review: add TermSpec as MineObject if meaningful
+разгрузка,Process,heuristic_word,2,review: add TermSpec as Process if meaningful
+Численное моделирование,Model,heuristic_phrase,2,review: add TermSpec as Model if meaningful
+Высокие напряжения,Condition,heuristic_phrase,2,review: add TermSpec as Condition if meaningful
+Институтом Гипроникель,Organization,heuristic_phrase,2,review: add TermSpec as Organization if meaningful
+установка,Process,heuristic_word,2,review: add TermSpec as Process if meaningful
+коронки,Equipment,heuristic_word,2,review: add TermSpec as Equipment if meaningful
+соосного измерительного шпура,MineObject,heuristic_phrase,2,review: add TermSpec as MineObject if meaningful
+Установка,Process,heuristic_word,2,review: add TermSpec as Process if meaningful
+дискование керна,Result,heuristic_phrase,2,review: add TermSpec as Result if meaningful
+основных структур,GeologicalFeature,heuristic_phrase,2,review: add TermSpec as GeologicalFeature if meaningful
+отсутствие,Result,heuristic_word,2,review: add TermSpec as Result if meaningful
+поясов,GeologicalFeature,heuristic_word,2,review: add TermSpec as GeologicalFeature if meaningful
+влияния горной выработки,Condition,heuristic_phrase,2,review: add TermSpec as Condition if meaningful
+керна диаметром,Material,heuristic_phrase,2,review: add TermSpec as Material if meaningful
+датчиков,Equipment,heuristic_word,2,review: add TermSpec as Equipment if meaningful
+экстензометр фиксируется,Equipment,heuristic_phrase,2,review: add TermSpec as Equipment if meaningful
+напряжения,Property,heuristic_word,2,review: add TermSpec as Property if meaningful
+Схема деформации керна,Material,heuristic_phrase,2,review: add TermSpec as Material if meaningful
+проходке внешней скважины,Process,heuristic_phrase,2,review: add TermSpec as Process if meaningful
+полной разгрузки керна,Process,heuristic_phrase,1,review: add TermSpec as Process if meaningful
+ООО,Organization,heuristic_word,1,review: add TermSpec as Organization if meaningful
+ИНСТИТУТ,Organization,heuristic_word,1,review: add TermSpec as Organization if meaningful
+ГИПРОНИКЕЛЬ,Organization,heuristic_word,1,review: add TermSpec as Organization if meaningful
+ДЕПАРТАМЕНТ,Organization,heuristic_word,1,review: add TermSpec as Organization if meaningful
+ДОКЛАДЧИК,Expert,heuristic_word,1,review: add TermSpec as Expert if meaningful
+ЗАВЕДУЮЩИЙ,Expert,heuristic_word,1,review: add TermSpec as Expert if meaningful
+ЛАБОРАТОРИЕЙ,Organization,heuristic_word,1,review: add TermSpec as Organization if meaningful
+К.Т.Н,Expert,heuristic_word,1,review: add TermSpec as Expert if meaningful
+ТРОФИМОВ,Expert,heuristic_word,1,review: add TermSpec as Expert if meaningful
+горизонтов,MineObject,heuristic_word,1,review: add TermSpec as MineObject if meaningful
+полезных,Material,heuristic_word,1,review: add TermSpec as Material if meaningful
+ископаемых,Material,heuristic_word,1,review: add TermSpec as Material if meaningful
+геомеханических,Technology,heuristic_word,1,review: add TermSpec as Technology if meaningful
+предпочтительным,Recommendation,heuristic_word,1,review: add TermSpec as Recommendation if meaningful
+рудника,MineObject,heuristic_word,1,review: add TermSpec as MineObject if meaningful
+зоны влияния,Condition,heuristic_phrase,1,review: add TermSpec as Condition if meaningful
+горизонтальных,Condition,heuristic_word,1,review: add TermSpec as Condition if meaningful
+сжимающих,Condition,heuristic_word,1,review: add TermSpec as Condition if meaningful
+литостатическим,Condition,heuristic_word,1,review: add TermSpec as Condition if meaningful
+критических,Condition,heuristic_word,1,review: add TermSpec as Condition if meaningful
+необходимо,Recommendation,heuristic_word,1,review: add TermSpec as Recommendation if meaningful
+технологии,Technology,heuristic_word,1,review: add TermSpec as Technology if meaningful
+Норильского,MineObject,heuristic_word,1,review: add TermSpec as MineObject if meaningful
+влияния выработки,Condition,heuristic_phrase,1,review: add TermSpec as Condition if meaningful
+отсутствие влияния,Result,heuristic_phrase,1,review: add TermSpec as Result if meaningful
+разрушению,Result,heuristic_word,1,review: add TermSpec as Result if meaningful
+Рекомендации,Recommendation,heuristic_word,1,review: add TermSpec as Recommendation if meaningful
+ISRM,Method,heuristic_word,1,review: add TermSpec as Method if meaningful
+модели,Model,heuristic_word,1,review: add TermSpec as Model if meaningful
+тензора,Property,heuristic_word,1,review: add TermSpec as Property if meaningful
+гидродомкратов,Method,heuristic_word,1,review: add TermSpec as Method if meaningful
+гидроразрыва,Method,heuristic_word,1,review: add TermSpec as Method if meaningful
+деформометра,Equipment,heuristic_word,1,review: add TermSpec as Equipment if meaningful
+тензодатчиков,Equipment,heuristic_word,1,review: add TermSpec as Equipment if meaningful
+DRA,Method,heuristic_word,1,review: add TermSpec as Method if meaningful
+пластических деформаций,Condition,heuristic_phrase,1,review: add TermSpec as Condition if meaningful
+USBM,Equipment,heuristic_word,1,review: add TermSpec as Equipment if meaningful
+Geokon,Equipment,heuristic_word,1,review: add TermSpec as Equipment if meaningful
+США,Organization,heuristic_word,1,review: add TermSpec as Organization if meaningful
+Рекомендован,Recommendation,heuristic_word,1,review: add TermSpec as Recommendation if meaningful
+ASTM,Method,heuristic_word,1,review: add TermSpec as Method if meaningful
+Overcoring,Method,heuristic_word,1,review: add TermSpec as Method if meaningful
+Sygra,Organization,heuristic_word,1,review: add TermSpec as Organization if meaningful
+Gray,Expert,heuristic_word,1,review: add TermSpec as Expert if meaningful
+Австралия,Organization,heuristic_word,1,review: add TermSpec as Organization if meaningful
+LVDT,Equipment,heuristic_word,1,review: add TermSpec as Equipment if meaningful
+результатов,Result,heuristic_word,1,review: add TermSpec as Result if meaningful
+образца,Material,heuristic_word,1,review: add TermSpec as Material if meaningful
+Осевой экстензометр,Equipment,heuristic_phrase,1,review: add TermSpec as Equipment if meaningful
+Zetlab,Equipment,heuristic_word,1,review: add TermSpec as Equipment if meaningful
+ZETT901,Equipment,heuristic_word,1,review: add TermSpec as Equipment if meaningful
+Россия,Organization,heuristic_word,1,review: add TermSpec as Organization if meaningful
+экстензометр,Equipment,heuristic_word,1,review: add TermSpec as Equipment if meaningful
+Гипроникель,Organization,heuristic_word,1,review: add TermSpec as Organization if meaningful
+шпура,MineObject,heuristic_word,1,review: add TermSpec as MineObject if meaningful
+шпур,MineObject,heuristic_word,1,review: add TermSpec as MineObject if meaningful
+Контроль,Process,heuristic_word,1,review: add TermSpec as Process if meaningful
+полимеризации,Process,heuristic_word,1,review: add TermSpec as Process if meaningful
+став,Equipment,heuristic_word,1,review: add TermSpec as Equipment if meaningful
+сальник,Equipment,heuristic_word,1,review: add TermSpec as Equipment if meaningful
+вертлюг,Equipment,heuristic_word,1,review: add TermSpec as Equipment if meaningful
+Разбуривание,Process,heuristic_word,1,review: add TermSpec as Process if meaningful
+геологоразведочного,Technology,heuristic_word,1,review: add TermSpec as Technology if meaningful
+образец,Material,heuristic_word,1,review: add TermSpec as Material if meaningful
+дисковании,Result,heuristic_word,1,review: add TermSpec as Result if meaningful
+структур,GeologicalFeature,heuristic_word,1,review: add TermSpec as GeologicalFeature if meaningful
+блоковые,GeologicalFeature,heuristic_word,1,review: add TermSpec as GeologicalFeature if meaningful
+складчато,GeologicalFeature,heuristic_word,1,review: add TermSpec as GeologicalFeature if meaningful
+надвиговых,GeologicalFeature,heuristic_word,1,review: add TermSpec as GeologicalFeature if meaningful
+выводы,Result,heuristic_word,1,review: add TermSpec as Result if meaningful
+Разрывные,GeologicalFeature,heuristic_word,1,review: add TermSpec as GeologicalFeature if meaningful
+нарушения,GeologicalFeature,heuristic_word,1,review: add TermSpec as GeologicalFeature if meaningful
+моделирование процесса,Process,heuristic_phrase,1,review: add TermSpec as Process if meaningful
+Горсты,GeologicalFeature,heuristic_word,1,review: add TermSpec as GeologicalFeature if meaningful
+грабены,GeologicalFeature,heuristic_word,1,review: add TermSpec as GeologicalFeature if meaningful
+Талнахского,MineObject,heuristic_word,1,review: add TermSpec as MineObject if meaningful
+рудного,MineObject,heuristic_word,1,review: add TermSpec as MineObject if meaningful
+узла,MineObject,heuristic_word,1,review: add TermSpec as MineObject if meaningful
+время,Parameter,heuristic_word,1,review: add TermSpec as Parameter if meaningful
+конечных,Model,heuristic_word,1,review: add TermSpec as Model if meaningful
+элементов,Model,heuristic_word,1,review: add TermSpec as Model if meaningful
+моделирование,Process,heuristic_word,1,review: add TermSpec as Process if meaningful
+диаметром HQ,Parameter,heuristic_phrase,1,review: add TermSpec as Parameter if meaningful
+отбор,Process,heuristic_word,1,review: add TermSpec as Process if meaningful
+состояние,Property,heuristic_word,1,review: add TermSpec as Property if meaningful
+оптимальной,Recommendation,heuristic_word,1,review: add TermSpec as Recommendation if meaningful
+бурение,Process,heuristic_word,1,review: add TermSpec as Process if meaningful
+экстензометров,Equipment,heuristic_word,1,review: add TermSpec as Equipment if meaningful
+концентраций,Condition,heuristic_word,1,review: add TermSpec as Condition if meaningful
+скважин,MineObject,heuristic_word,1,review: add TermSpec as MineObject if meaningful
+коронка,Equipment,heuristic_word,1,review: add TermSpec as Equipment if meaningful
+Моделирование процесса,Process,heuristic_phrase,1,review: add TermSpec as Process if meaningful
+этапов,Parameter,heuristic_word,1,review: add TermSpec as Parameter if meaningful
+МПа,Parameter,heuristic_word,1,review: add TermSpec as Parameter if meaningful
+моделирования,Model,heuristic_word,1,review: add TermSpec as Model if meaningful
+Кирша,Method,heuristic_word,1,review: add TermSpec as Method if meaningful
+результатов измерений,Result,heuristic_phrase,1,review: add TermSpec as Result if meaningful
